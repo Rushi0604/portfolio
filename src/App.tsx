@@ -11,6 +11,7 @@ import { TechStack } from './tech-stack';
 import { Contact } from './components/contact/Contact';
 import { Footer } from './components/layout/Footer';
 import { CursorDemoPage } from './components/ui/CursorDemoPage';
+import { ClickSpark } from './components/ui/ClickSpark';
 import {
   CursorProvider as NewCursorProvider,
   Cursor as NewCursor,
@@ -49,6 +50,17 @@ export const App: React.FC = () => {
         <div className="relative min-h-screen bg-background text-slate-100 selection:bg-violet-600/30 selection:text-violet-200 overflow-x-hidden font-sans">
           {/* Top Scroll Progress Indicator */}
           <ScrollProgress />
+
+          {/* Click Spark effect layer */}
+          <ClickSpark
+            sparkColor="#ffffff"
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+            easing="ease-out"
+            extraScale={1}
+          />
 
           {/* Custom Cursors */}
           {USE_NEW_CURSOR ? (
