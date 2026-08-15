@@ -54,8 +54,7 @@ const CursorProvider = React.forwardRef<HTMLDivElement, CursorProviderProps>(
       }
 
       const handleMouseMove = (e: MouseEvent) => {
-        const rect = parent.getBoundingClientRect();
-        setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        setCursorPos({ x: e.clientX, y: e.clientY });
         setIsActive(true);
       };
       const handleMouseLeave = () => setIsActive(false);
@@ -116,7 +115,7 @@ const Cursor = React.forwardRef<HTMLDivElement, CursorProps>(
             ref={cursorRef as any}
             data-slot="cursor"
             className={cn(
-              'transform-[translate(-50%,-50%)] pointer-events-none z-[9999] absolute',
+              'transform-[translate(-50%,-50%)] pointer-events-none z-[9999] fixed',
               className,
             )}
             style={{ top: y, left: x, ...style }}
@@ -237,7 +236,7 @@ const CursorFollow = React.forwardRef<HTMLDivElement, CursorFollowProps>(
             ref={cursorFollowRef as any}
             data-slot="cursor-follow"
             className={cn(
-              'transform-[translate(-50%,-50%)] pointer-events-none z-[9998] absolute',
+              'transform-[translate(-50%,-50%)] pointer-events-none z-[9998] fixed',
               className,
             )}
             style={{ top: springY, left: springX, ...style }}
