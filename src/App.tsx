@@ -14,7 +14,6 @@ import { CursorDemoPage } from './components/ui/CursorDemoPage';
 import {
   CursorProvider as NewCursorProvider,
   Cursor as NewCursor,
-  CursorFollow as NewCursorFollow,
 } from './components/ui/cursor';
 
 export const App: React.FC = () => {
@@ -70,9 +69,6 @@ export const App: React.FC = () => {
                     />
                   </svg>
                 </NewCursor>
-                <NewCursorFollow className="hidden md:block">
-                  <div className="w-8 h-8 rounded-full border border-violet-400/40 backdrop-blur-[0.5px]"></div>
-                </NewCursorFollow>
               </>
             )
           ) : (
