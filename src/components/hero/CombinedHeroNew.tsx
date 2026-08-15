@@ -1,6 +1,7 @@
 import React from "react";
 import { ReferenceHeroText } from "./ReferenceHeroText";
 import ReferenceImageParticles from "./ReferenceImageParticles";
+import MoltenMetal from "./MoltenMetal";
 import yashImg from "./yash.png";
 
 export const CombinedHeroNew: React.FC = () => {
@@ -16,6 +17,40 @@ export const CombinedHeroNew: React.FC = () => {
         overflow: "hidden"
       }}
     >
+      {/* 0. MoltenMetal background layer */}
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          zIndex: 0,
+          pointerEvents: "none"
+        }}
+      >
+        <MoltenMetal
+          color1="#5227FF"
+          color2="#FF9FFC"
+          color3="#FFFFFF"
+          speed={0.25}
+          scale={6}
+          detail={3}
+          glow={1.6}
+          coreSize={0.1}
+          swirl={1}
+          fold={-0.2}
+          blackPoint={0.05}
+          brightness={1.1}
+          colorMode="molten"
+          grain={true}
+          grainIntensity={0.05}
+          mouseInteraction={true}
+          mouseStrength={0.2}
+          opacity={0.85}
+        />
+      </div>
+
       {/* 1. Infinite particle canvas layer */}
       <div
         style={{
