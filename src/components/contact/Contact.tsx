@@ -117,8 +117,7 @@ export const Contact: React.FC = () => {
 
           <a
             href={siteConfig.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Yash_Kshatriya_Resume.pdf"
             onMouseEnter={() => setCursorVariant('link')}
             onMouseLeave={resetCursor}
             className="flex items-center gap-2 px-4 py-2 text-xs font-mono text-slate-400 hover:text-white bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 hover:border-violet-500/30 rounded-lg transition-all"

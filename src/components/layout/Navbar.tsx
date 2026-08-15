@@ -9,14 +9,13 @@ const NAV_ITEMS = [
   { label: 'About', href: '#about', id: 'about' },
   { label: 'Projects', href: '#projects', id: 'projects' },
   { label: 'Stack', href: '#stack', id: 'stack' },
-  { label: 'GitHub', href: '#github', id: 'github' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const activeSection = useScrollSpy(['hero', 'about', 'projects', 'stack', 'github', 'contact'], 200);
+  const activeSection = useScrollSpy(['hero', 'about', 'projects', 'stack', 'contact'], 200);
   const { setCursorVariant, resetCursor } = useCursor();
 
   useEffect(() => {
@@ -95,8 +94,7 @@ export const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-3">
           <a
             href={siteConfig.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Yash_Kshatriya_Resume.pdf"
             onMouseEnter={() => setCursorVariant('button')}
             onMouseLeave={resetCursor}
             className="group flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-slate-200 bg-white/[0.03] hover:bg-violet-600/20 border border-white/10 hover:border-violet-500/50 rounded-full transition-all duration-200"
@@ -148,8 +146,7 @@ export const Navbar: React.FC = () => {
               <div className="pt-2 border-t border-white/10">
                 <a
                   href={siteConfig.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download="Yash_Kshatriya_Resume.pdf"
                   className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-violet-600 hover:bg-violet-500 rounded-lg shadow-glow-purple transition-all"
                 >
                   <FileText className="w-4 h-4" />

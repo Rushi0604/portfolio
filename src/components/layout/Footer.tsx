@@ -59,8 +59,7 @@ export const Footer: React.FC = () => {
           </a>
           <a
             href={siteConfig.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Yash_Kshatriya_Resume.pdf"
             aria-label="Resume"
             onMouseEnter={() => setCursorVariant('hover')}
             onMouseLeave={resetCursor}

@@ -7,7 +7,7 @@ import { CombinedHeroNew } from './reference-image-particles-new/CombinedHeroNew
 import { About } from './components/about/About';
 import { Projects } from './components/projects/Projects';
 import { TechStack } from './tech-stack';
-import { GithubActivity } from './components/github/GithubActivity';
+
 import { Contact } from './components/contact/Contact';
 import { Footer } from './components/layout/Footer';
 
@@ -30,7 +30,7 @@ export const App: React.FC = () => {
           <About />
           <Projects />
           <TechStack />
-          <GithubActivity />
+
           <Contact />
         </main>
 
