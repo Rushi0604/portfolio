@@ -1,5 +1,5 @@
 import React from "react";
-import { ReferenceHeroText } from "../reference-hero-text-new/ReferenceHeroText";
+import { ReferenceHeroText } from "./ReferenceHeroText";
 import ReferenceImageParticles from "./ReferenceImageParticles";
 import yashImg from "./yash.png";
 

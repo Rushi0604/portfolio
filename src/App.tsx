@@ -3,7 +3,7 @@ import { CursorProvider } from './context/CursorContext';
 import { CustomCursor } from './components/layout/CustomCursor';
 import { ScrollProgress } from './components/layout/ScrollProgress';
 import { Navbar } from './components/layout/Navbar';
-import { CombinedHeroNew } from './reference-image-particles-new/CombinedHeroNew';
+import { CombinedHeroNew } from './components/hero/CombinedHeroNew';
 import { About } from './components/about/About';
 import { Projects } from './components/projects/Projects';
 import { TechStack } from './tech-stack';

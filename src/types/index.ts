@@ -24,33 +24,6 @@ export interface TechItem {
   highlight?: boolean;
 }
 
-export interface GithubRepo {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-  topics?: string[];
-}
-
-export interface GithubStats {
-  totalContributions: number;
-  totalRepos: number;
-  followers: number;
-  stars: number;
-  avatarUrl: string;
-  streakDays?: number;
-}
-
-export interface ContributionDay {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-}
-
 export interface SiteConfig {
   name: string;
   firstName: string;
