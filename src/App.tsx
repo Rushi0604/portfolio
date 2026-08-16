@@ -5,7 +5,7 @@ import { ScrollProgress } from './components/layout/ScrollProgress';
 import { Navbar } from './components/layout/Navbar';
 import { CombinedHeroNew } from './components/hero/CombinedHeroNew';
 import { About } from './components/about/About';
-import { Projects } from './components/projects/Projects';
+import MyWork from './portfolio2/MyWork/MyWork';
 import { TechStack } from './tech-stack';
 
 import { Contact } from './components/contact/Contact';
@@ -94,7 +94,8 @@ export const App: React.FC = () => {
         <main className="relative z-10">
           <CombinedHeroNew />
           <About />
-          <Projects />
+          <MyWork />
+          
           <TechStack />
 
           <Contact />
