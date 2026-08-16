@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
+import { CometCard } from "../../components/ui/comet-card";
 
 interface Props {
   image: string;
@@ -9,37 +8,17 @@ interface Props {
 }
 
 const WorkImage = (props: Props) => {
-  const [isVideo, setIsVideo] = useState(false);
-  const [video, setVideo] = useState("");
-  const handleMouseEnter = async () => {
-    if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
-    }
-  };
-
   return (
     <div className="work-image">
-      <a
-        className="work-image-in"
-        href={props.link}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsVideo(false)}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-cursor={"disable"}
-      >
-        {props.link && (
-          <div className="work-link">
-            <MdArrowOutward />
-          </div>
-        )}
-        <img src={props.image} alt={props.alt} />
-        {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
-      </a>
+      <CometCard className="w-full">
+        <div
+          className="work-image-in"
+          data-cursor={"disable"}
+          style={{ cursor: "none" }}
+        >
+          <img src={props.image} alt={props.alt} />
+        </div>
+      </CometCard>
     </div>
   );
 };

@@ -33,7 +33,7 @@
   display: flex;
   height: 100%;
   margin-left: -80px;
-  padding-left: 40px;
+  padding-left: 75px;
   padding-right: 120px;
   position: relative;
 }
@@ -79,6 +79,18 @@
   transform: rotateY(180deg);
 }
 
+.work-card-inner .work-card-back {
+  pointer-events: none;
+}
+
+.work-card-inner.is-flipped .work-card-back {
+  pointer-events: auto;
+}
+
+.work-card-inner.is-flipped .work-card-front {
+  pointer-events: none;
+}
+
 .work-card-front,
 .work-card-back {
   position: absolute;
@@ -94,7 +106,7 @@
 }
 
 .work-card-front {
-  padding: 40px 80px 40px 80px;
+  padding: 40px 80px 30px 80px;
   justify-content: start;
   gap: 0;
 }
@@ -110,13 +122,16 @@
 .work-card-back::-webkit-scrollbar {
   width: 4px;
 }
+
 .work-card-back::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .work-card-back::-webkit-scrollbar-thumb {
   background: rgba(194, 164, 255, 0.15);
   border-radius: 9999px;
 }
+
 .work-card-back::-webkit-scrollbar-thumb:hover {
   background: var(--accentColor);
 }
@@ -190,6 +205,7 @@
 
 .back-actions {
   margin-top: auto;
+  margin-bottom: 15px;
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -225,7 +241,7 @@
   justify-content: space-between;
   display: flex;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .work-title>div {
@@ -237,6 +253,14 @@
   line-height: 50px;
   margin: 0;
   font-weight: 600;
+}
+
+.work-info {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .work-info h4 {
@@ -260,6 +284,14 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  margin-top: 20px;
+  cursor: none !important;
+}
+
+.work-image *,
+.work-image img,
+.work-image-in {
+  cursor: none !important;
 }
 
 .work-image-in {
@@ -300,7 +332,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #000;
+  background-color: transparent;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -443,6 +475,7 @@
 
 .work-links {
   margin-top: auto;
+  margin-bottom: 15px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -484,23 +517,33 @@
   .work-section {
     padding-bottom: 50px;
   }
+
   .work-flex {
-    padding-left: 30px;
+    padding-left: 55px;
   }
+
+  .work-info {
+    min-height: 100px;
+  }
+
   .work-box {
     width: 350px;
     padding: 0;
   }
+
   .work-card-front {
     padding: 30px 30px 20px 30px;
     gap: 0;
   }
+
   .work-card-back {
     padding: 30px 25px 20px 25px;
   }
+
   .work-image img {
     height: 180px;
   }
+
   .work-tools {
     margin-top: 15px;
   }
@@ -511,6 +554,10 @@
     height: auto;
     min-height: auto;
     padding-bottom: 40px;
+  }
+
+  .work-info {
+    min-height: auto;
   }
 
   .work-flex {

@@ -15,6 +15,7 @@ import { cn } from '@/utils/cn';
 type CursorContextType = {
   cursorPos: { x: number; y: number };
   isActive: boolean;
+  isHoveringClickable: boolean;
   containerRef: React.RefObject<HTMLDivElement | null>;
   cursorRef: React.RefObject<HTMLDivElement | null>;
 };
@@ -39,6 +40,7 @@ const CursorProvider = React.forwardRef<HTMLDivElement, CursorProviderProps>(
   ({ children, ...props }, ref) => {
     const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });
     const [isActive, setIsActive] = React.useState(false);
+    const [isHoveringClickable, setIsHoveringClickable] = React.useState(false);
     const containerRef = React.useRef<HTMLDivElement>(null);
     const cursorRef = React.useRef<HTMLDivElement>(null);
     React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
@@ -57,20 +59,36 @@ const CursorProvider = React.forwardRef<HTMLDivElement, CursorProviderProps>(
         setCursorPos({ x: e.clientX, y: e.clientY });
         setIsActive(true);
       };
-      const handleMouseLeave = () => setIsActive(false);
+      
+      const handleMouseLeave = () => {
+        setIsActive(false);
+        setIsHoveringClickable(false);
+      };
+
+      const handleMouseOver = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (!target) return;
+
+        const clickable = target.closest('a, button, input, select, textarea, [role="button"], .cursor-pointer');
+        const isPointerStyle = window.getComputedStyle(target).cursor === 'pointer';
+
+        setIsHoveringClickable(!!clickable || isPointerStyle);
+      };
 
       parent.addEventListener('mousemove', handleMouseMove);
       parent.addEventListener('mouseleave', handleMouseLeave);
+      parent.addEventListener('mouseover', handleMouseOver);
 
       return () => {
         parent.removeEventListener('mousemove', handleMouseMove);
         parent.removeEventListener('mouseleave', handleMouseLeave);
+        parent.removeEventListener('mouseover', handleMouseOver);
       };
     }, []);
 
     return (
       <CursorContext.Provider
-        value={{ cursorPos, isActive, containerRef, cursorRef }}
+        value={{ cursorPos, isActive, isHoveringClickable, containerRef, cursorRef }}
       >
         <div ref={containerRef} data-slot="cursor-provider" {...props}>
           {children}
@@ -87,7 +105,7 @@ type CursorProps = HTMLMotionProps<'div'> & {
 
 const Cursor = React.forwardRef<HTMLDivElement, CursorProps>(
   ({ children, className, style, ...props }, ref) => {
-    const { cursorPos, isActive, containerRef, cursorRef } = useCursor();
+    const { cursorPos, isActive, isHoveringClickable, containerRef, cursorRef } = useCursor();
     React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);
 
     const x = useMotionValue(0);
@@ -124,7 +142,24 @@ const Cursor = React.forwardRef<HTMLDivElement, CursorProps>(
             exit={{ scale: 0, opacity: 0 }}
             {...props}
           >
-            {children}
+            <motion.div
+              animate={{
+                color: isHoveringClickable ? '#c2a4ff' : '#8b5cf6',
+                scale: isHoveringClickable ? 0.95 : 1,
+                filter: isHoveringClickable 
+                  ? 'drop-shadow(0 0 6px rgba(194, 164, 255, 0.8))' 
+                  : 'drop-shadow(0 0 6px rgba(139, 92, 246, 0.65))',
+              }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                ['--cursor-stroke' as any]: isHoveringClickable ? '#c2a4ff' : '#ffffff',
+              }}
+              transition={{ duration: 0.18, ease: 'easeInOut' }}
+            >
+              {children}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -147,6 +147,7 @@ const MyWork = () => {
 
                       {/* Know More button (right) */}
                       <button
+                        type="button"
                         onClick={() => setFlippedCards(prev => ({ ...prev, [index]: true }))}
                         className="work-action-btn know-more-btn"
                       >
@@ -193,10 +194,11 @@ const MyWork = () => {
 
                     <div className="back-actions">
                       <button
+                        type="button"
                         onClick={() => setFlippedCards(prev => ({ ...prev, [index]: false }))}
                         className="work-action-btn back-btn"
                       >
-                        ← Back to Project
+                        ↩ Back to Overview
                       </button>
                     </div>
                   </div>

@@ -11,6 +11,19 @@
     --border-subtle: rgba(255, 255, 255, 0.08);
   }
 
+  html,
+  body,
+  #root,
+  button,
+  a,
+  img,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none !important;
+  }
+
   html {
     scroll-behavior: smooth;
     font-family: 'Space Grotesk', Inter, system-ui, -apple-system, sans-serif;
