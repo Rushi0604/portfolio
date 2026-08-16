@@ -15,6 +15,7 @@ export const siteConfig: SiteConfig = {
     github: import.meta.env.VITE_GITHUB_URL || 'https://github.com/Yash19k',
     linkedin: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/yashkshatriya19/',
     email: `mailto:${import.meta.env.VITE_EMAIL || 'kshatriyayash19@gmail.com'}`,
+    leetcode: 'https://leetcode.com/u/Yash19k/',
   },
   coordinates: {
     lat: '19.0760° N',

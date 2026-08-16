@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { siteConfig } from '../../config/site';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import { useCursor } from '../../context/CursorContext';
+import { InteractiveHoverButton } from '../ui/interactive-hover-button';
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about', id: 'about' },
-  { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'Timeline', href: '#timeline', id: 'timeline' },
+  { label: 'Projects', href: '#work', id: 'work' },
   { label: 'Stack', href: '#stack', id: 'stack' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ];
@@ -15,7 +17,7 @@ const NAV_ITEMS = [
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const activeSection = useScrollSpy(['hero', 'about', 'projects', 'stack', 'contact'], 200);
+  const activeSection = useScrollSpy(['hero', 'about', 'timeline', 'work', 'stack', 'contact']);
   const { setCursorVariant, resetCursor } = useCursor();
 
   useEffect(() => {
@@ -91,17 +93,18 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Action Button: Resume */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center">
           <a
             href={siteConfig.resumeUrl}
-            download="Yash_Kshatriya_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
             onMouseEnter={() => setCursorVariant('button')}
             onMouseLeave={resetCursor}
-            className="group flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-slate-200 bg-white/[0.03] hover:bg-violet-600/20 border border-white/10 hover:border-violet-500/50 rounded-full transition-all duration-200"
           >
-            <FileText className="w-3.5 h-3.5 text-violet-400 group-hover:text-violet-300 transition-colors" />
-            <span>Resume</span>
-            <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <InteractiveHoverButton className="scale-90 transform origin-right">
+              Resume
+            </InteractiveHoverButton>
           </a>
         </div>
 
@@ -143,15 +146,16 @@ export const Navbar: React.FC = () => {
                 </a>
               ))}
 
-              <div className="pt-2 border-t border-white/10">
+              <div className="pt-4 border-t border-white/10 flex justify-center">
                 <a
                   href={siteConfig.resumeUrl}
-                  download="Yash_Kshatriya_Resume.pdf"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-violet-600 hover:bg-violet-500 rounded-lg shadow-glow-purple transition-all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center"
                 >
-                  <FileText className="w-4 h-4" />
-                  <span>View Resume</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <InteractiveHoverButton className="w-full">
+                    Resume
+                  </InteractiveHoverButton>
                 </a>
               </div>
             </div>
@@ -161,3 +165,5 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
+
+export default Navbar;

@@ -1,6 +1,9 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import SocialButtons from "../../social-buttons";
+import { InteractiveHoverButton } from "../ui/interactive-hover-button";
+import { siteConfig } from "../../config/site";
 import "./ReferenceHeroText.css";
 
 // Register the SplitText plugin
@@ -80,6 +83,30 @@ export const ReferenceHeroText = ({
           ease: "power1.inOut",
           y: 0,
           delay: 0.8,
+        }
+      );
+
+      gsap.fromTo(
+        q(".landing-socials-wrapper") as any,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.0,
+          ease: "power3.out",
+          delay: 1.2,
+        }
+      );
+
+      gsap.fromTo(
+        q(".landing-resume-wrapper") as any,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.0,
+          ease: "power3.out",
+          delay: 1.4,
         }
       );
 
@@ -164,6 +191,9 @@ export const ReferenceHeroText = ({
             <br />
             <span>{lastName}</span>
           </h1>
+          <div className="landing-socials-wrapper" style={{ marginTop: "20px" }}>
+            <SocialButtons />
+          </div>
         </div>
         <div className="landing-info">
           <h3>{subtitle}</h3>
@@ -175,6 +205,18 @@ export const ReferenceHeroText = ({
             <div className="landing-h2-info">{titles[1]}</div>
             <div className="landing-h2-info-1">{titles[0]}</div>
           </h2>
+          <div className="landing-resume-wrapper" style={{ marginTop: "16px", pointerEvents: "auto" }}>
+            <a
+              href={siteConfig.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <InteractiveHoverButton>
+                Resume
+              </InteractiveHoverButton>
+            </a>
+          </div>
         </div>
       </div>
     </div>

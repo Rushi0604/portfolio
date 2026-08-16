@@ -1,0 +1,76 @@
+.social-buttons-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 8, 12, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(194, 164, 255, 0.15);
+  border-radius: 9999px;
+  padding: 6px 8px;
+  gap: 10px;
+  box-shadow: 0 0 15px rgba(194, 164, 255, 0.08), inset 0 0 8px rgba(194, 164, 255, 0.03);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: max-content;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.social-buttons-pill:hover {
+  border-color: rgba(194, 164, 255, 0.3);
+  box-shadow: 0 0 22px rgba(194, 164, 255, 0.15), inset 0 0 10px rgba(194, 164, 255, 0.04);
+}
+
+.social-buttons-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #eae5ec; /* light icon color */
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.social-buttons-item svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+  transition: transform 0.25s ease;
+}
+
+.social-buttons-item:hover {
+  background: #c2a4ff; /* light purple/lavender accent */
+  color: #0b080c; /* dark background color */
+  box-shadow: 0 0 14px rgba(194, 164, 255, 0.6);
+}
+
+.social-buttons-item:hover svg {
+  transform: scale(1.05);
+}
+
+.social-buttons-item:active {
+  transform: scale(0.95);
+}
+
+/* Mobile responsive adjustments */
+@media only screen and (max-width: 480px) {
+  .social-buttons-pill {
+    padding: 4px 6px;
+    gap: 6px;
+  }
+  .social-buttons-item {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+  .social-buttons-item svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+}

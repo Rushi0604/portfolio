@@ -1,30 +1,37 @@
 import { useState, useEffect } from 'react';
 
-export const useScrollSpy = (sectionIds: string[], offset: number = 100): string => {
-  const [activeSection, setActiveSection] = useState<string>(sectionIds[0] || '');
+export const useScrollSpy = (sectionIds: string[]): string => {
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + offset;
-
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sectionIds[i]);
-        if (section) {
-          const top = section.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sectionIds[i]);
-            return;
-          }
-        }
-      }
-      setActiveSection(sectionIds[0] || '');
+    const observerOptions = {
+      root: null,
+      // Trigger when the section occupies the middle part of the screen
+      rootMargin: '-30% 0px -30% 0px',
+      threshold: 0,
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionIds, offset]);
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-  return activeSection;
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [sectionIds]);
+
+  return activeSection || sectionIds[0] || '';
 };

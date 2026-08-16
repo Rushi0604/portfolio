@@ -100,7 +100,7 @@ const CareerTimeline: React.FC = () => {
   }, []);
 
   return (
-    <section className="new-career-section" ref={sectionRef}>
+    <section className="new-career-section" ref={sectionRef} id="timeline">
       <h2 className="new-career-title">
         My <span>Journey</span>
       </h2>

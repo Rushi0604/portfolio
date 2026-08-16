@@ -184,7 +184,26 @@ h2.landing-info-h2 {
     top: 50%;
     left: auto;
     right: 66%;
+    transform: translate(0%, calc(-50% + 20px));
+  }
+
+  .landing-info {
+    bottom: auto;
+    top: 51%;
+    z-index: inherit;
+    text-align: left;
     transform: translate(0%, -50%);
+    right: auto;
+    left: 62%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .landing-intro {
+    top: 50%;
+    left: auto;
+    right: 70%;
+    transform: translate(0%, calc(-50% + 20px));
   }
 
   .landing-info {
@@ -195,25 +214,6 @@ h2.landing-info-h2 {
     transform: translate(0%, -50%);
     right: auto;
     left: 66%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .landing-intro {
-    top: 50%;
-    left: auto;
-    right: 70%;
-    transform: translate(0%, -50%);
-  }
-
-  .landing-info {
-    bottom: auto;
-    top: 51%;
-    z-index: inherit;
-    text-align: left;
-    transform: translate(0%, -50%);
-    right: auto;
-    left: 70%;
   }
 }
 
@@ -239,4 +239,9 @@ h2.landing-info-h2 {
   h2.landing-info-h2 {
     font-size: 75px;
   }
+}
+
+.landing-socials-wrapper,
+.landing-resume-wrapper {
+  opacity: 0;
 }
