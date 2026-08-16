@@ -4,7 +4,8 @@ import WorkImage from "./WorkImage";
 import { referenceProjects } from "../data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdArrowOutward, MdInfoOutline, MdCode } from 'react-icons/md';
+import { MdArrowOutward, MdInfoOutline } from 'react-icons/md';
+import { FaGithub } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,57 +76,84 @@ const MyWork = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {referenceProjects.map((project, index) => (
-            <div className="work-box" key={index}>
-              <div className="work-info">
-                <div className="work-title">
-                  <h3>0{index + 1}</h3>
-                  <div>
-                    <h4>{project.title}</h4>
-                    <p>{project.category}</p>
+          {referenceProjects.map((project, index) => {
+            const isFirstProject = index === 0;
+            return (
+              <div className="work-box" key={index}>
+                <div className="work-info">
+                  <div className="work-title">
+                    <h3>0{index + 1}</h3>
+                    <div>
+                      <h4>{project.title}</h4>
+                      <p>{project.category}</p>
+                    </div>
                   </div>
+                  <h4>Tools and features</h4>
+                  <p>{project.tools}</p>
                 </div>
-                <h4>Tools and features</h4>
-                <p>{project.tools}</p>
+                <WorkImage image={project.image} alt={project.title} link={project.link} video={project.video} />
+                
+                {/* Action links row */}
                 <div className="work-links">
-                  {project.knowMoreUrl && (
-                    <a
-                      href={project.knowMoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-action-btn"
-                    >
-                      <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
-                      Know More
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-action-btn"
-                    >
-                      <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.githubUrl && (
+                  {/* GitHub button (left) */}
+                  {project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="work-action-btn"
+                      className="work-action-btn github-btn"
                     >
-                      <MdCode style={{ marginRight: '6px', fontSize: '16px' }} />
+                      <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
                       GitHub
                     </a>
+                  ) : (
+                    <span className="work-action-btn disabled-btn">
+                      <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
+                      GitHub
+                    </span>
+                  )}
+
+                  {/* Live Demo button (center - first project only) */}
+                  {isFirstProject && (
+                    project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="work-action-btn live-btn"
+                      >
+                        <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
+                        Live Demo
+                      </a>
+                    ) : (
+                      <span className="work-action-btn disabled-btn">
+                        <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
+                        Live Demo
+                      </span>
+                    )
+                  )}
+
+                  {/* Know More button (right) */}
+                  {project.knowMoreUrl ? (
+                    <a
+                      href={project.knowMoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-action-btn know-more-btn"
+                    >
+                      <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
+                      Know More
+                    </a>
+                  ) : (
+                    <span className="work-action-btn disabled-btn">
+                      <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
+                      Know More
+                    </span>
                   )}
                 </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} link={project.link} video={project.video} />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

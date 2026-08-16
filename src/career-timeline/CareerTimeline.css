@@ -1,0 +1,236 @@
+.new-career-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  box-sizing: border-box;
+  background-color: var(--backgroundColor, #0b080c);
+  color: #eae5ec;
+}
+
+.new-career-title {
+  font-size: 70px;
+  line-height: 1.1;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 80px;
+  background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.new-career-title span {
+  font-weight: 300;
+  font-family: "Geist", sans-serif;
+}
+
+/* Timeline Wrapper */
+.new-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 40px 0;
+}
+
+/* Center Line Container */
+.new-timeline-line-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: rgba(194, 164, 255, 0.1);
+  pointer-events: none;
+}
+
+/* The active growing line */
+.new-timeline-active-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Driven by JS scroll progress */
+  background: linear-gradient(to bottom, transparent, var(--accentColor, #c2a4ff) 30%, var(--accentColor, #c2a4ff));
+  transform-origin: top;
+  transition: height 0.1s ease-out;
+}
+
+/* Glowing Ball */
+.new-timeline-ball {
+  position: absolute;
+  top: 0%; /* Driven by JS scroll progress */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accentColor, #c2a4ff);
+  box-shadow: 
+    0 0 10px 4px var(--accentColor, #c2a4ff),
+    0 0 25px 12px rgba(194, 164, 255, 0.5),
+    0 0 80px 24px rgba(194, 164, 255, 0.2);
+  z-index: 10;
+  transition: top 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* Timeline Row */
+.new-timeline-row {
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: flex-start;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
+}
+
+/* Left & Right Blocks */
+.new-timeline-left {
+  width: 44%;
+  box-sizing: border-box;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.new-timeline-right {
+  width: 44%;
+  margin-left: 6%;
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 60px; /* Precise 60px gap from center line to text */
+}
+
+/* Role details on the left */
+.new-timeline-role-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.new-timeline-role-container h4 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.new-timeline-role-container h5 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--accentColor, #c2a4ff);
+}
+
+.new-timeline-period {
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+/* Description on the right */
+.new-timeline-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(234, 229, 236, 0.7);
+  margin: 1;
+  transition: color 0.3s ease;
+}
+
+/* Active State Styles */
+.new-timeline-row.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.new-timeline-row.is-active .new-timeline-role-container h4 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.new-timeline-row.is-active .new-timeline-period {
+  color: #ffffff;
+}
+
+.new-timeline-row.is-active .new-timeline-desc {
+  color: #ffffff;
+}
+
+/* Inactive State Styles */
+.new-timeline-row.is-inactive {
+  opacity: 0.35;
+  transform: scale(0.98);
+}
+
+/* Responsive Media Queries */
+@media only screen and (max-width: 900px) {
+  .new-career-title {
+    font-size: 48px;
+    margin-bottom: 50px;
+  }
+
+  .new-timeline-line-container {
+    left: 20px;
+    transform: none;
+  }
+
+  .new-timeline-ball {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+
+  .new-timeline-row {
+    flex-direction: column;
+    padding-left: 45px;
+    gap: 15px;
+    box-sizing: border-box;
+  }
+
+  .new-timeline-left,
+  .new-timeline-right {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    margin-left: 0;
+  }
+
+  .new-timeline-period {
+    font-size: 28px;
+    margin-top: 5px;
+  }
+
+  .new-timeline-role-container h4 {
+    font-size: 22px;
+  }
+
+  .new-timeline-role-container h5 {
+    font-size: 16px;
+  }
+
+  .new-timeline-desc {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .new-career-title {
+    font-size: 38px;
+  }
+
+  .new-timeline-wrapper {
+    gap: 50px;
+  }
+}
