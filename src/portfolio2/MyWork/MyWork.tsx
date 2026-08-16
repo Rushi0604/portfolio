@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./MyWork.css";
 import WorkImage from "./WorkImage";
-import { referenceProjects } from "../data";
+import { referenceProjects, projectDetails } from "../data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward, MdInfoOutline } from 'react-icons/md';
@@ -10,6 +10,8 @@ import { FaGithub } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 const MyWork = () => {
+  const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
+
   useEffect(() => {
     // Disable pinning on mobile to allow natural vertical scrolling
     if (window.innerWidth <= 768) return;
@@ -78,78 +80,127 @@ const MyWork = () => {
         <div className="work-flex">
           {referenceProjects.map((project, index) => {
             const isFirstProject = index === 0;
+            const isFlipped = !!flippedCards[index];
+            const details = projectDetails[project.detailKey];
+
             return (
               <div className="work-box" key={index}>
-                <div className="work-info">
-                  <div className="work-title">
-                    <h3>0{index + 1}</h3>
-                    <div>
-                      <h4>{project.title}</h4>
-                      <p>{project.category}</p>
+                <div className={`work-card-inner ${isFlipped ? "is-flipped" : ""}`}>
+                  
+                  {/* FRONT FACE */}
+                  <div className="work-card-front">
+                    <div className="work-info">
+                      <div className="work-title">
+                        <h3>0{index + 1}</h3>
+                        <div>
+                          <h4>{project.title}</h4>
+                          <p>{project.category}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <WorkImage image={project.image} alt={project.title} link={project.link} video={project.video} />
+                    
+                    <div className="work-tools">
+                      <h4>Tools and features</h4>
+                      <p>{project.tools}</p>
+                    </div>
+                    
+                    {/* Action links row */}
+                    <div className="work-links">
+                      {/* GitHub button (left) */}
+                      {project.githubUrl ? (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="work-action-btn github-btn"
+                        >
+                          <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
+                          GitHub
+                        </a>
+                      ) : (
+                        <span className="work-action-btn disabled-btn">
+                          <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
+                          GitHub
+                        </span>
+                      )}
+
+                      {/* Live Demo button (center - first project only) */}
+                      {isFirstProject && (
+                        project.liveUrl ? (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="work-action-btn live-btn"
+                          >
+                            <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
+                            Live Demo
+                          </a>
+                        ) : (
+                          <span className="work-action-btn disabled-btn">
+                            <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
+                            Live Demo
+                          </span>
+                        )
+                      )}
+
+                      {/* Know More button (right) */}
+                      <button
+                        onClick={() => setFlippedCards(prev => ({ ...prev, [index]: true }))}
+                        className="work-action-btn know-more-btn"
+                      >
+                        <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
+                        Know More
+                      </button>
                     </div>
                   </div>
-                  <h4>Tools and features</h4>
-                  <p>{project.tools}</p>
-                </div>
-                <WorkImage image={project.image} alt={project.title} link={project.link} video={project.video} />
-                
-                {/* Action links row */}
-                <div className="work-links">
-                  {/* GitHub button (left) */}
-                  {project.githubUrl ? (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-action-btn github-btn"
-                    >
-                      <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
-                      GitHub
-                    </a>
-                  ) : (
-                    <span className="work-action-btn disabled-btn">
-                      <FaGithub style={{ marginRight: '6px', fontSize: '16px' }} />
-                      GitHub
-                    </span>
-                  )}
 
-                  {/* Live Demo button (center - first project only) */}
-                  {isFirstProject && (
-                    project.liveUrl ? (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="work-action-btn live-btn"
+                  {/* BACK FACE */}
+                  <div className="work-card-back">
+                    <div className="work-back-header">
+                      <div className="work-back-title">
+                        <h3>0{index + 1}</h3>
+                        <h4>{project.title}</h4>
+                      </div>
+                    </div>
+
+                    <div className="work-back-body">
+                      <div className="work-back-section">
+                        <h5>Overview</h5>
+                        <p>{details.overview}</p>
+                      </div>
+
+                      <div className="work-back-section">
+                        <h5>Key Features</h5>
+                        <ul>
+                          {details.features.map((feature, fIdx) => (
+                            <li key={fIdx}>• {feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="work-back-section">
+                        <h5>Tech Stack</h5>
+                        <p>{details.technologies}</p>
+                      </div>
+
+                      <div className="work-back-section">
+                        <h5>Contribution</h5>
+                        <p>{details.contribution}</p>
+                      </div>
+                    </div>
+
+                    <div className="back-actions">
+                      <button
+                        onClick={() => setFlippedCards(prev => ({ ...prev, [index]: false }))}
+                        className="work-action-btn back-btn"
                       >
-                        <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
-                        Live Demo
-                      </a>
-                    ) : (
-                      <span className="work-action-btn disabled-btn">
-                        <MdArrowOutward style={{ marginRight: '6px', fontSize: '16px' }} />
-                        Live Demo
-                      </span>
-                    )
-                  )}
+                        ← Back to Project
+                      </button>
+                    </div>
+                  </div>
 
-                  {/* Know More button (right) */}
-                  {project.knowMoreUrl ? (
-                    <a
-                      href={project.knowMoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-action-btn know-more-btn"
-                    >
-                      <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
-                      Know More
-                    </a>
-                  ) : (
-                    <span className="work-action-btn disabled-btn">
-                      <MdInfoOutline style={{ marginRight: '6px', fontSize: '16px' }} />
-                      Know More
-                    </span>
-                  )}
                 </div>
               </div>
             );

@@ -1,8 +1,8 @@
 .work-section h2 {
-  margin-top: 100px;
+  margin-top: 50px;
   font-size: 70px;
   font-weight: 500;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .work-section h2>span {
@@ -17,6 +17,7 @@
   box-sizing: border-box;
   will-change: transform;
   margin-bottom: 250px;
+  padding-bottom: 60px;
 }
 
 .work-container {
@@ -32,28 +33,176 @@
   display: flex;
   height: 100%;
   margin-left: -80px;
+  padding-left: 40px;
   padding-right: 120px;
   position: relative;
 }
 
 .work-box {
   position: relative;
-  padding: 80px 80px 140px 80px;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
   width: 600px;
   box-sizing: border-box;
   border-right: 1px solid #363636;
   flex-shrink: 0;
-  gap: 50px;
+  perspective: 1000px;
+}
+
+.work-tools {
+  margin-top: 25px;
+}
+
+.work-tools h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  color: #ffffff;
+}
+
+.work-tools p {
+  font-weight: 200;
+  color: #adacac;
+  margin: 0;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.work-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.work-card-front,
+.work-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #08080c;
+}
+
+.work-card-front {
+  padding: 40px 80px 40px 80px;
   justify-content: start;
+  gap: 0;
 }
-.work-flex .work-box:first-child {
-  transform: translateX(30px);
-  width: 570px;
+
+.work-card-back {
+  transform: rotateY(180deg);
+  padding: 60px 50px 40px 50px;
+  justify-content: start;
+  border-left: 1px solid rgba(255, 255, 255, 0.02);
+  overflow-y: auto;
 }
-.work-flex .work-box:nth-child(even) {
-  flex-direction: column-reverse;
+
+.work-card-back::-webkit-scrollbar {
+  width: 4px;
+}
+.work-card-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+.work-card-back::-webkit-scrollbar-thumb {
+  background: rgba(194, 164, 255, 0.15);
+  border-radius: 9999px;
+}
+.work-card-back::-webkit-scrollbar-thumb:hover {
+  background: var(--accentColor);
+}
+
+.work-back-header {
+  margin-bottom: 15px;
+}
+
+.work-back-title {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.work-back-title h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 38px;
+  color: var(--accentColor);
+  opacity: 0.15;
+}
+
+.work-back-title h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.work-back-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.work-back-section h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accentColor);
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 4px;
+}
+
+.work-back-section p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #c9c3cc;
+}
+
+.work-back-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.work-back-section li {
+  font-size: 13px;
+  color: #c9c3cc;
+}
+
+.back-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.work-action-btn.back-btn {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.work-action-btn.back-btn:hover {
+  background-color: rgba(194, 164, 255, 0.08);
+  border-color: var(--accentColor);
 }
 
 .work-flex::before,
@@ -157,15 +306,16 @@
 }
 
 .work-image img {
-  max-width: 100%;
-  max-height: 350px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
   border-radius: 8px;
   display: block;
 }
 
 @media only screen and (max-height: 900px) {
   .work-image img {
-    max-height: 250px;
+    height: 180px;
   }
 
   .work-box {
@@ -222,7 +372,7 @@
 
 @media only screen and (max-height: 650px) {
   .work-image img {
-    max-height: 200px;
+    height: 140px;
   }
 
   .work-section h2 {
@@ -292,10 +442,8 @@
 }
 
 .work-links {
-  position: absolute;
-  bottom: 35px;
-  left: 80px;
-  right: 80px;
+  margin-top: auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -333,28 +481,86 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .work-box {
-    padding-bottom: 90px !important;
+  .work-section {
+    padding-bottom: 50px;
   }
-  .work-links {
-    bottom: 20px;
-    left: 30px;
-    right: 30px;
+  .work-flex {
+    padding-left: 30px;
+  }
+  .work-box {
+    width: 350px;
+    padding: 0;
+  }
+  .work-card-front {
+    padding: 30px 30px 20px 30px;
+    gap: 0;
+  }
+  .work-card-back {
+    padding: 30px 25px 20px 25px;
+  }
+  .work-image img {
+    height: 180px;
+  }
+  .work-tools {
+    margin-top: 15px;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .work-box {
-    padding-bottom: 30px !important;
+  .work-section {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 40px;
   }
-  .work-links {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    margin-top: 30px;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
+  .work-flex {
+    flex-direction: column;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0;
+  }
+
+  .work-box {
+    width: 100%;
+    max-width: 100%;
+    height: 580px;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid #363636;
+  }
+
+  .work-card-front {
+    padding: 40px 20px 20px 20px;
+    gap: 0;
+  }
+
+  .work-card-back {
+    padding: 40px 20px 20px 20px;
+  }
+
+  .work-image img {
+    height: 180px;
+  }
+
+  .work-tools {
+    margin-top: 20px;
+  }
+
+  .work-back-title h3 {
+    font-size: 32px !important;
+  }
+
+  .work-back-title h4 {
+    font-size: 22px !important;
+  }
+
+  .work-back-section h5 {
+    font-size: 10px !important;
+  }
+
+  .work-back-section p,
+  .work-back-section li {
+    font-size: 12.5px !important;
   }
 }
