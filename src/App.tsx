@@ -7,6 +7,7 @@ import { CombinedHeroNew } from './components/hero/CombinedHeroNew';
 import { About } from './components/about/About';
 import MyWork from './portfolio2/MyWork/MyWork';
 import { TechStack } from './tech-stack';
+import CareerTimeline from './career-timeline';
 
 import { Contact } from './components/contact/Contact';
 import { Footer } from './components/layout/Footer';
@@ -94,6 +95,7 @@ export const App: React.FC = () => {
         <main className="relative z-10">
           <CombinedHeroNew />
           <About />
+          <CareerTimeline />
           <MyWork />
           
           <TechStack />

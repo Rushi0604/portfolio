@@ -8,31 +8,45 @@ export interface CareerEntry {
 
 export const careerData: CareerEntry[] = [
   {
-    position: "Computer Analyst",
-    company: "CID, West Bengal",
-    period: "2025",
-    description: "Building production-ready application backends using Node.js, PostgreSQL, MySQL, and MongoDB. Developing applications using Python.",
+    position: "Completed Class 12",
+    company: "Anand Niketan Maninagar",
+    period: "2024",
+    description: "Completed my Class 12 education and began my journey toward Computer Science and technology.",
     side: "left"
   },
   {
-    position: "Master of Computer Applications",
-    company: "Meghnad Saha Institute of Technology",
-    period: "2025",
-    description: "Expected graduation in July 2025.",
+    position: "Started B.Tech CSE",
+    company: "LJ University",
+    period: "2024",
+    description: "Started my B.Tech in Computer Science & Engineering, building a foundation in programming, databases, data structures, and software development.",
     side: "right"
   },
   {
-    position: "BSc in Computer Science",
-    company: "University of Calcutta",
-    period: "2023",
-    description: "Graduated from Narasinha Dutt College.",
+    position: "Full-Stack Development",
+    company: "Web Development & Projects",
+    period: "2025",
+    description: "Started building practical full-stack applications while exploring frontend, backend, databases, APIs, and modern web technologies.",
     side: "left"
   },
   {
-    position: "Certifications",
-    company: "NPTEL & Forage",
-    period: "2024-25",
-    description: "Privacy and Security in Online Social Media (NPTEL), Introduction to Programming C (NPTEL), Deloitte Australia Data Analytics Job Simulation (Forage).",
+    position: "Started AI/ML Journey",
+    company: "Artificial Intelligence & Machine Learning",
+    period: "2025",
+    description: "Began developing my skills in AI and Machine Learning through structured learning, experimentation, and hands-on projects.",
+    side: "right"
+  },
+  {
+    position: "Built Multiple Projects",
+    company: "Projects & Real-World Development",
+    period: "2026",
+    description: "Built multiple projects across full-stack development, AI/ML, geospatial applications, and software engineering while applying my skills to practical problems.",
+    side: "left"
+  },
+  {
+    position: "Seeking Full-Stack & AI/ML Internship",
+    company: "Currently Looking for Opportunities",
+    period: "2026",
+    description: "Looking for internship opportunities in Full-Stack Development and AI/ML where I can apply my skills to real-world projects, contribute to a development team, and continue growing as a developer.",
     side: "right"
   }
 ];

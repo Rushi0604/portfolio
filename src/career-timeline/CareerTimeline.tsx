@@ -102,7 +102,7 @@ const CareerTimeline: React.FC = () => {
   return (
     <section className="new-career-section" ref={sectionRef}>
       <h2 className="new-career-title">
-        Experience, <span>education</span> &<br /> certifications
+        My <span>Journey</span>
       </h2>
 
       <div className="new-timeline-wrapper">
