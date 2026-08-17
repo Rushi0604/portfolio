@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from './context/CursorContext';
 import { CustomCursor } from './components/layout/CustomCursor';
 import { ScrollProgress } from './components/layout/ScrollProgress';
@@ -106,6 +107,7 @@ export const App: React.FC = () => {
           {/* Minimalist Footer */}
           <Footer />
         </div>
+        <Analytics />
       </NewCursorProvider>
     </CursorProvider>
   );
