@@ -21,7 +21,7 @@ export const TechStack = () => {
 
       {/* Content */}
       <div className="techstack-content">
-        <h2>Tech Stack</h2>
+        <h2 className="cursor-target">Tech Stack</h2>
         
         <div className="techstack-categories">
           {techStackCategories.map((category, catIndex) => (

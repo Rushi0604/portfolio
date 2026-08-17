@@ -91,21 +91,21 @@ export const App: React.FC = () => {
           {/* Sticky Fixed Navbar */}
           <Navbar />
 
-        {/* Main Content Sections */}
-        <main className="relative z-10">
-          <CombinedHeroNew />
-          <About />
-          <CareerTimeline />
-          <MyWork />
-          
-          <TechStack />
+          {/* Main Content Sections */}
+          <main className="relative z-10">
+            <CombinedHeroNew />
+            <About />
+            <CareerTimeline />
+            <MyWork />
 
-          <Contact />
-        </main>
+            <TechStack />
 
-        {/* Minimalist Footer */}
-        <Footer />
-      </div>
+            <Contact />
+          </main>
+
+          {/* Minimalist Footer */}
+          <Footer />
+        </div>
       </NewCursorProvider>
     </CursorProvider>
   );

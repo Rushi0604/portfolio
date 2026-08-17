@@ -47,9 +47,18 @@ export const Contact: React.FC = () => {
 
         {/* Big Bold Statement */}
         <div className="space-y-3 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white uppercase font-display leading-[1.08]">
+          <h2
+            className="cursor-target text-[70px] font-normal tracking-tight uppercase leading-[1.1]"
+            style={{
+              background: 'linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              color: 'transparent',
+            }}
+          >
             Let&apos;s Build <br />
-            <span className="text-gradient-purple">Something Great.</span>
+            Something Great.
           </h2>
           <p className="text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
             Have an idea, opportunity, or project worth discussing? My inbox is always open.

@@ -24,11 +24,6 @@ export const techStackCategories: TechCategory[] = [
         url: "https://www.java.com",
       },
       {
-        name: "C",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-        url: "https://en.cppreference.com/w/c",
-      },
-      {
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
         url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
@@ -102,11 +97,6 @@ export const techStackCategories: TechCategory[] = [
         name: "PyTorch",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
         url: "https://pytorch.org",
-      },
-      {
-        name: "OpenCV",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg",
-        url: "https://opencv.org",
       },
       {
         name: "Leaflet.js",

@@ -18,6 +18,7 @@
   line-height: 1.1;
   font-weight: 400;
   text-align: center;
+  text-transform: uppercase;
   margin-bottom: 80px;
   background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
   background-clip: text;

@@ -18,14 +18,12 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <div
-      className={`space-y-2 mb-12 md:mb-16 ${
-        align === 'center' ? 'text-center mx-auto' : 'text-left'
-      } ${className}`}
+      className={`space-y-2 mb-12 md:mb-16 ${align === 'center' ? 'text-center mx-auto' : 'text-left'
+        } ${className}`}
     >
       {/* Section index indicator */}
-      <div className={`flex items-center gap-2 font-mono text-xs text-violet-400 tracking-widest uppercase ${
-        align === 'center' ? 'justify-center' : ''
-      }`}>
+      <div className={`flex items-center gap-2 font-mono text-xs text-violet-400 tracking-widest uppercase ${align === 'center' ? 'justify-center' : ''
+        }`}>
         <span className="text-violet-500">//</span>
         <span>{number}</span>
         <span className="w-8 h-[1px] bg-violet-500/30" />
@@ -37,7 +35,14 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white uppercase font-display"
+        className="text-[70px] font-normal tracking-tight uppercase leading-[1.1]"
+        style={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: 'transparent',
+        }}
       >
         {title}
       </motion.h2>

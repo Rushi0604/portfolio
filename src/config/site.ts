@@ -26,11 +26,12 @@ export const siteConfig: SiteConfig = {
 };
 
 export const aboutContent = {
-  quoteLead: "I'm a Computer Science Engineering student",
-  quoteMiddle: "focused on building software, exploring AI/ML,",
-  quoteEnd: "and turning ideas into practical products.",
-  fullText: "I'm a Computer Science Engineering student focused on building software, exploring AI/ML, and turning ideas into practical products. I bridge data-driven intelligence with modern interactive interfaces.",
-  subBio: "I thrive at the intersection of machine learning algorithms, geospatial intelligence, and sleek frontend engineering. Passionate about architecting scalable systems that solve tangible spatial and data engineering challenges.",
+  quoteLead: "Turning curiosity into code,",
+  quoteMiddle: "ideas into products, and challenges into opportunities.",
+  quoteEnd: "",
+  fullText: "Turning curiosity into code, ideas into products, and challenges into opportunities.",
+  secondParagraph: "Driven to create, challenge the ordinary, and turn bold ideas into meaningful experiences. Always learning, experimenting, and pushing what's possible.",
+  subBio: "My current focus is on strengthening my skills in React, TypeScript, Python, Django, REST APIs, databases, and AI/ML while building real-world projects and continuously improving my problem-solving abilities.",
 };
 
 export const projectsData: ProjectItem[] = [

@@ -1,66 +1,85 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import React, { useRef, useLayoutEffect } from 'react';
+import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionHeading } from '../ui/SectionHeading';
-import { siteConfig, aboutContent } from '../../config/site';
-import { Cpu, Globe, Layers, Compass } from 'lucide-react';
+import { aboutContent } from '../../config/site';
+import { Cpu, Globe, Layers, Compass, Database } from 'lucide-react';
+import { InvertedCursor } from '../ui/inverted-cursor';
 
-interface WordProps {
-  children: string;
-  progress: MotionValue<number>;
-  range: [number, number];
-  isHighlighted?: boolean;
-}
+gsap.registerPlugin(ScrollTrigger);
 
-const Word: React.FC<WordProps> = ({ children, progress, range, isHighlighted = false }) => {
-  const opacity = useTransform(progress, range, [0.2, 1]);
-  const color = useTransform(
-    progress,
-    range,
-    [
-      'rgba(148, 163, 184, 0.25)',
-      isHighlighted ? '#a78bfa' : '#f8fafc',
-    ]
-  );
+const highlightedTerms = ['Turning', 'curiosity', 'code,', 'ideas', 'products,', 'challenges', 'opportunities.'];
 
-  return (
-    <motion.span
-      style={{ opacity, color }}
-      className={`inline-block mr-[0.28em] mb-1.5 transition-colors duration-150 ${
-        isHighlighted ? 'font-semibold' : ''
-      }`}
-    >
-      {children}
-    </motion.span>
-  );
+const fadeRight = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+};
+
+const cardContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
 };
 
 export const About: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 0.8', 'end 0.3'],
-  });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const wordsRef = useRef<HTMLDivElement>(null);
 
-  const statementWords = aboutContent.fullText.split(' ');
-  const highlightedTerms = ['Computer', 'Science', 'Engineering', 'software,', 'AI/ML,', 'practical', 'products.', 'intelligence', 'interactive'];
+  const paragraph1Words = aboutContent.fullText.split(' ');
+  const paragraph2Words = (aboutContent as Record<string, string>).secondParagraph.split(' ');
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const wordEls = wordsRef.current?.querySelectorAll('.about-word');
+      if (!wordEls || wordEls.length === 0) return;
+
+      gsap.set(wordEls, { opacity: 0.15 });
+
+      gsap.to(wordEls, {
+        opacity: 1,
+        stagger: 0.05,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          end: 'bottom 40%',
+          scrub: true,
+          id: 'about-text-reveal',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       id="about"
-      ref={containerRef}
+      ref={sectionRef}
       className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
     >
+      {/* Scoped inverted cursor — only active inside About */}
+      <InvertedCursor containerRef={sectionRef} />
+
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <SectionHeading
         number="01"
         title="About Me"
-        subtitle="Bridging data-driven intelligence with modern creative development."
+        subtitle="Building intelligent, scalable, and user-focused software solutions."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        {/* Left: Scroll-Driven Progressive Typography */}
+        {/* Left: Scroll-Revealed Statement */}
         <div className="lg:col-span-8 space-y-8">
           <div className="p-8 sm:p-10 rounded-2xl bg-surface/70 border border-white/[0.08] backdrop-blur-xl shadow-2xl relative overflow-hidden">
             {/* Ambient corner highlight */}
@@ -72,47 +91,80 @@ export const About: React.FC = () => {
               <span>// PERSPECTIVE</span>
             </div>
 
-            {/* Scroll-Revealed Statement */}
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-[1.35] tracking-tight font-display">
-              {statementWords.map((word, i) => {
-                const start = i / statementWords.length;
-                const end = start + 1 / statementWords.length;
-                const isHighlight = highlightedTerms.some((t) => word.toLowerCase().includes(t.toLowerCase().replace(/[,.]/g, '')));
+            {/* Scroll-Scrubbed Word Reveal */}
+            <div ref={wordsRef}>
+              {/* Paragraph 1 — Main statement */}
+              <h3 className="font-normal leading-[1.35] tracking-tight font-display" style={{ fontSize: 'clamp(1.8rem, 3.2vw, 3rem)' }}>
+                {paragraph1Words.map((word, i) => {
+                  const isHighlight = highlightedTerms.some((t) =>
+                    word.toLowerCase() === t.toLowerCase() ||
+                    word.toLowerCase().replace(/[,.]/g, '') === t.toLowerCase().replace(/[,.]/g, '')
+                  );
 
-                return (
-                  <Word
-                    key={i}
-                    progress={scrollYProgress}
-                    range={[start, end]}
-                    isHighlighted={isHighlight}
+                  return (
+                    <span
+                      key={`p1-${i}`}
+                      className={`about-word inline-block mr-[0.28em] mb-1.5 ${
+                        isHighlight
+                          ? 'font-semibold text-violet-400'
+                          : 'text-slate-50'
+                      }`}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+              </h3>
+
+              {/* Paragraph 2 — Supporting statement (new line, smaller) */}
+              <p className="mt-5 leading-[1.6] text-slate-300" style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)' }}>
+                {paragraph2Words.map((word, i) => (
+                  <span
+                    key={`p2-${i}`}
+                    className="about-word inline-block mr-[0.25em] mb-1"
                   >
                     {word}
-                  </Word>
-                );
-              })}
-            </h3>
+                  </span>
+                ))}
+              </p>
+            </div>
 
             {/* Sub-Bio */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-8 pt-6 border-t border-white/[0.06] text-slate-300 text-sm sm:text-base leading-relaxed"
-            >
+            <p className="mt-8 pt-6 border-t border-white/[0.06] text-slate-400 text-[15px] leading-relaxed">
               {aboutContent.subBio}
-            </motion.p>
+            </p>
           </div>
         </div>
 
-        {/* Right: Technical HUD Cards */}
-        <div className="lg:col-span-4 space-y-4">
-          {/* Card 1: Intelligent Systems */}
+        {/* Right: Focus Areas */}
+        <motion.div
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="lg:col-span-4 space-y-4"
+        >
+          {/* Card 1: Full-Stack Development */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            variants={fadeRight}
+            className="p-5 rounded-xl bg-surface/60 border border-white/[0.06] hover:border-violet-500/30 transition-all duration-300 group"
+          >
+            <div className="flex items-center gap-3 mb-2.5">
+              <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-colors">
+                <Globe className="w-4 h-4" />
+              </div>
+              <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">
+                Full-Stack Development
+              </h4>
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              Building responsive web applications with React, TypeScript, REST APIs, Django, and modern backend technologies.
+            </p>
+          </motion.div>
+
+          {/* Card 2: AI & Machine Learning */}
+          <motion.div
+            variants={fadeRight}
             className="p-5 rounded-xl bg-surface/60 border border-white/[0.06] hover:border-violet-500/30 transition-all duration-300 group"
           >
             <div className="flex items-center gap-3 mb-2.5">
@@ -123,38 +175,14 @@ export const About: React.FC = () => {
                 AI & Machine Learning
               </h4>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Deep neural networks, computer vision on multi-spectral imagery, regression ensembles, and real-time inference optimization.
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              Exploring machine learning, computer vision, predictive modeling, and practical AI applications.
             </p>
           </motion.div>
 
-          {/* Card 2: Geospatial & Full-Stack */}
+          {/* Card 3: Software Engineering */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-5 rounded-xl bg-surface/60 border border-white/[0.06] hover:border-violet-500/30 transition-all duration-300 group"
-          >
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-colors">
-                <Globe className="w-4 h-4" />
-              </div>
-              <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">
-                Geospatial Engineering
-              </h4>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              PostGIS spatial indexing, Leaflet/Mapbox interactive vector layers, site suitability analytics, and raster processing pipelines.
-            </p>
-          </motion.div>
-
-          {/* Card 3: Modern Creative Dev */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            variants={fadeRight}
             className="p-5 rounded-xl bg-surface/60 border border-white/[0.06] hover:border-violet-500/30 transition-all duration-300 group"
           >
             <div className="flex items-center gap-3 mb-2.5">
@@ -162,33 +190,32 @@ export const About: React.FC = () => {
                 <Layers className="w-4 h-4" />
               </div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">
-                Interactive Engineering
+                Software Engineering
               </h4>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              High-performance React/TypeScript applications, Three.js particle dynamics, fluid layout animations, and accessible UX.
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              Designing maintainable systems, working with databases and APIs, and developing reliable, production-oriented applications.
             </p>
           </motion.div>
 
-          {/* HUD Metadata Card */}
-          <div className="p-4 rounded-xl bg-violet-950/20 border border-violet-500/20 font-mono text-[11px] text-violet-300 space-y-1.5">
-            <div className="flex justify-between items-center">
-              <span className="text-slate-400">STUDENT:</span>
-              <span className="font-semibold text-white">CSE @ B.Tech</span>
+          {/* Card 4: Data & Database Engineering */}
+          <motion.div
+            variants={fadeRight}
+            className="p-5 rounded-xl bg-surface/60 border border-white/[0.06] hover:border-violet-500/30 transition-all duration-300 group"
+          >
+            <div className="flex items-center gap-3 mb-2.5">
+              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500/20 transition-colors">
+                <Database className="w-4 h-4" />
+              </div>
+              <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">
+                Data & Database Engineering
+              </h4>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-slate-400">COORDINATES:</span>
-              <span>{siteConfig.coordinates.lat}, {siteConfig.coordinates.lon}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-slate-400">STATUS:</span>
-              <span className="text-emerald-400 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                AVAILABLE
-              </span>
-            </div>
-          </div>
-        </div>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              Working with PostgreSQL, MySQL, MongoDB, and data-driven applications, with a focus on efficient data modeling, querying, and backend integration.
+            </p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

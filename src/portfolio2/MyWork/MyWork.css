@@ -1,12 +1,19 @@
 .work-section h2 {
   margin-top: 50px;
   font-size: 70px;
-  font-weight: 500;
+  font-weight: 400;
+  text-transform: uppercase;
   margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .work-section h2>span {
-  color: var(--accentColor);
+  color: inherit;
 }
 
 .work-section {

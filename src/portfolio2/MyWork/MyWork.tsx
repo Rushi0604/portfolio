@@ -74,7 +74,7 @@ const MyWork = () => {
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
-        <h2>
+        <h2 className="cursor-target">
           My <span>Work</span>
         </h2>
         <div className="work-flex">
