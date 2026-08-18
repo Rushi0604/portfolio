@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   name: 'Rushi Patel',
   firstName: 'Rushi',
   lastName: 'Patel',
-  headline: 'AI / ML • FULL-STACK • COMPUTER SCIENCE',
+  headline: 'AI / ML • FULL-STACK • COMPUTER SCIENCE & TECHNOLOGY',
   role: 'AI / ML & Full-Stack Developer',
   subrole: 'Computer Science Engineering Student',
   statement: 'Building intelligent software, exploring AI, and turning ideas into real-world products.',
