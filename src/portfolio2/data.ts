@@ -14,45 +14,45 @@ export interface ProjectEntry {
 
 export const referenceProjects: ProjectEntry[] = [
   {
-    title: "Obrix",
-    category: "AI-Powered Geospatial Location Intelligence Platform",
-    tools: "React, Django REST Framework, PostgreSQL, PostGIS, Leaflet",
-    image: "/images/obrix.png",
-    githubUrl: "https://github.com/Yash19k/Obrix-Location-Intelligence-Platform",
-    liveUrl: "https://obrix-frontend.onrender.com/",
-    link: "https://github.com/Yash19k/Obrix-Location-Intelligence-Platform",
+    title: "AI Complaint Engine",
+    category: "AI-Powered Complaint Classification & Resolution Recommendation",
+    tools: "TypeScript, React, NLP, Python, Machine Learning",
+    image: "/images/AI-Powered-Complaint-Classification-Resolution-Recommendation-Engine.png",
+    githubUrl: "https://github.com/Rushi0604/AI-Powered-Complaint-Classification-Resolution-Recommendation-Engine",
+    liveUrl: "https://ai-powered-complaint-classification.vercel.app",
+    link: "https://github.com/Rushi0604/AI-Powered-Complaint-Classification-Resolution-Recommendation-Engine",
     video: "video.webm",
-    detailKey: "obrix"
+    detailKey: "aiComplaint"
   },
   {
-    title: "AI-Powered Learning Platform",
-    category: "Web Application (2025)",
-    tools: "HTML, CSS, JavaScript, Bootstrap, AI",
-    image: "/images/academix.png",
-    githubUrl: "https://github.com/Yash19k/Academix",
-    link: "https://github.com/Yash19k/Academix",
+    title: "College Management",
+    category: "Full-Stack Web Application (2026)",
+    tools: "Python, Django, HTML, CSS, JavaScript, MySQL",
+    image: "/images/college_management.png",
+    githubUrl: "https://github.com/Rushi0604/College_management",
+    link: "https://github.com/Rushi0604/College_management",
     video: "video.webm",
-    detailKey: "learningPlatform"
+    detailKey: "collegeManagement"
   },
   {
-    title: "Logistics Management System",
-    category: "Java Application (2025)",
-    tools: "Java, JDBC, MySQL, Google Maps API",
-    image: "/images/lms.png",
-    githubUrl: "https://github.com/Yash19k/LMS",
-    link: "https://github.com/Yash19k/LMS",
+    title: "GameHub Online",
+    category: "Online Gaming Platform (2025)",
+    tools: "HTML, CSS, JavaScript",
+    image: "/images/gamehub.png",
+    githubUrl: "https://github.com/Rushi0604/GameHub-online",
+    link: "https://github.com/Rushi0604/GameHub-online",
     video: "video.webm",
-    detailKey: "logistics"
+    detailKey: "gameHub"
   },
   {
-    title: "TransitOps",
-    category: "Smart Transport Operations Platform",
-    tools: "React, TypeScript, Python, FastAPI, WebSockets, PostgreSQL, Tailwind CSS, Scikit-learn",
-    image: "/images/transitops.png",
-    githubUrl: "https://github.com/Yash19k/TransitOps-Smart-Transport-Operations-Platform",
-    link: "https://github.com/Yash19k/TransitOps-Smart-Transport-Operations-Platform",
+    title: "Zomato Clone",
+    category: "Food Delivery Web Application",
+    tools: "HTML, CSS, JavaScript",
+    image: "/images/Zomato.png",
+    githubUrl: "https://github.com/Rushi0604/Zomato",
+    link: "https://github.com/Rushi0604/Zomato",
     video: "video.webm",
-    detailKey: "transitOps"
+    detailKey: "zomato"
   }
 ];
 
@@ -64,63 +64,63 @@ export interface ProjectDetailEntry {
 }
 
 export const projectDetails: Record<string, ProjectDetailEntry> = {
-  obrix: {
+  aiComplaint: {
     overview:
-      "An AI-powered geospatial platform designed to analyze locations and provide intelligent site-readiness insights.",
+      "An intelligent AI-powered system that automatically analyzes customer complaints using Natural Language Processing (NLP). It classifies complaints into relevant categories, assigns priority levels based on urgency and sentiment, and recommends appropriate resolutions.",
     features: [
-      "Geospatial site analysis",
-      "Location intelligence",
-      "Interactive map visualization",
-      "AI-generated insights"
+      "Automated complaint classification using NLP",
+      "Priority level assignment based on urgency & sentiment",
+      "Resolution recommendation engine",
+      "Interactive dashboard for complaint tracking"
     ],
     technologies:
-      "React, Django REST Framework, PostgreSQL, PostGIS, Leaflet",
+      "TypeScript, React, Python, Natural Language Processing, Machine Learning",
     contribution:
-      "Full-stack development, geospatial integration, frontend architecture and API integration."
+      "Full-stack development, NLP model integration, frontend architecture and API design."
   },
 
-  learningPlatform: {
+  collegeManagement: {
     overview:
-      "A smart learning platform designed to provide students with structured learning resources and AI-assisted learning.",
+      "A comprehensive college management system built with Django and Python. It streamlines administrative tasks, student records, faculty management, and academic workflows for educational institutions.",
     features: [
-      "Video learning",
-      "Notes",
-      "Quizzes",
-      "AI chatbot"
+      "Student & faculty record management",
+      "Course and subject management",
+      "Admin dashboard with role-based access",
+      "Attendance and result tracking"
     ],
     technologies:
-      "HTML, CSS, JavaScript, Bootstrap, AI",
+      "Python, Django, MySQL, HTML, CSS, JavaScript",
     contribution:
-      "Frontend development and application architecture."
+      "Full-stack development, database design, backend API and frontend integration."
   },
 
-  logistics: {
+  gameHub: {
     overview:
-      "A Java-based logistics management application for managing users, logistics operations and distance-based fare calculations.",
+      "An online gaming hub platform featuring a collection of browser-based games. Users can browse, play and enjoy multiple games through a clean and responsive web interface.",
     features: [
-      "Admin and user roles",
-      "Logistics management",
-      "Database integration",
-      "Distance-based fare calculation"
+      "Multiple browser-based games",
+      "Clean and responsive UI",
+      "Game selection and navigation",
+      "Interactive gameplay experience"
     ],
     technologies:
-      "Java, JDBC, MySQL, Google Maps API",
+      "HTML, CSS, JavaScript",
     contribution:
-      "Application development, database integration and API integration."
+      "Frontend development, game logic implementation and UI/UX design."
   },
 
-  transitOps: {
+  zomato: {
     overview:
-      "A smart transportation operations platform designed to improve visibility and management of transport operations.",
+      "A Zomato-inspired food delivery web application clone. Features a modern, responsive UI with restaurant listings, food menus, and an intuitive ordering experience.",
     features: [
-      "Transport operation management",
-      "Route monitoring",
-      "Operational insights",
-      "Interactive dashboard"
+      "Restaurant listing and search",
+      "Food menu browsing",
+      "Responsive modern UI",
+      "Cart and order flow"
     ],
     technologies:
-      "React, Django, PostgreSQL",
+      "HTML, CSS, JavaScript",
     contribution:
-      "Full-stack development and system integration."
+      "Frontend development, UI/UX design and responsive layout implementation."
   }
 };

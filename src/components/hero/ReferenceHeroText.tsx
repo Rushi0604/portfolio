@@ -18,7 +18,7 @@ export interface ReferenceHeroTextProps {
 
 export const ReferenceHeroText = ({
   greeting = "Hello! I'm",
-  name = "YASH KSHATRIYA",
+  name = siteConfig.name.toUpperCase(),
   subtitle = "An Aspiring",
   titles = ["AI/ML ENGINEER", "FULL STACK DEVELOPER"],
 }: ReferenceHeroTextProps) => {

@@ -9,20 +9,20 @@ export interface CareerEntry {
 export const careerData: CareerEntry[] = [
   {
     position: "Completed Class 12",
-    company: "Anand Niketan Maninagar",
+    company: "JL High School Maninagar",
     period: "2024",
     description: "Completed my Class 12 education and began my journey toward Computer Science and technology.",
     side: "left"
   },
   {
-    position: "Started B.Tech CSE",
+    position: "Started B.Tech CST",
     company: "LJ University",
     period: "2024",
-    description: "Started my B.Tech in Computer Science & Engineering, building a foundation in programming, databases, data structures, and software development.",
+    description: "Started my B.Tech in Computer Science & Technology, building a foundation in programming, databases, data structures, and software development.",
     side: "right"
   },
   {
-    position: "Full-Stack Development",
+    position: "Started Full-Stack Development",
     company: "Web Development & Projects",
     period: "2025",
     description: "Started building practical full-stack applications while exploring frontend, backend, databases, APIs, and modern web technologies.",

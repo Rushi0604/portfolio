@@ -1,10 +1,10 @@
-# Yash Kshatriya — Portfolio
+# Rushi Patel — Portfolio
 
-Personal developer portfolio for Yash Kshatriya, showcasing software engineering, machine learning, and interactive WebGL experiences.
+Personal developer portfolio for Rushi Patel, showcasing software engineering, machine learning, and interactive WebGL experiences.
 
 ## Overview
 
-This website serves as a personal developer portfolio designed to showcase Yash Kshatriya's technical capabilities, projects, and design aesthetics. Yash is a Computer Science Engineering student focused on building software that bridges data-driven intelligence (AI/ML) with modern interactive user interfaces.
+This website serves as a personal developer portfolio designed to showcase Rushi Patel's technical capabilities, projects, and design aesthetics. Rushi is a Computer Science Engineering student focused on building software that bridges data-driven intelligence (AI/ML) with modern interactive user interfaces.
 
 ## Features
 
@@ -50,7 +50,7 @@ The portfolio employs a dark obsidian visual aesthetic accented by deep purple a
 ## Resume
 
 The portfolio supports direct offline downloading for the professional resume document:
-- **File name**: `Yash_Kshatriya_Resume.pdf` (saved statically under the web-accessible `public/` directory).
+- **File name**: `Rushi_Patel_Resume.pdf` (saved statically under the web-accessible `public/` directory).
 
 ## Connect
 
@@ -113,7 +113,7 @@ public/
 ├── images/
 ├── video/
 ├── favicon.svg
-└── Yash_Kshatriya_Resume.pdf
+└── Rushi_Patel_Resume.pdf
 ```
 
 ## Responsive Design

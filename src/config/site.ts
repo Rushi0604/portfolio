@@ -1,20 +1,20 @@
 import { ProjectItem, TechItem, SiteConfig } from '../types';
 
 export const siteConfig: SiteConfig = {
-  name: 'Yash Kshatriya',
-  firstName: 'Yash',
-  lastName: 'Kshatriya',
+  name: 'Rushi Patel',
+  firstName: 'Rushi',
+  lastName: 'Patel',
   headline: 'AI / ML • FULL-STACK • COMPUTER SCIENCE',
   role: 'AI / ML & Full-Stack Developer',
   subrole: 'Computer Science Engineering Student',
   statement: 'Building intelligent software, exploring AI, and turning ideas into real-world products.',
-  email: import.meta.env.VITE_EMAIL || 'kshatriyayash19@gmail.com',
-  githubUsername: import.meta.env.VITE_GITHUB_USERNAME || 'Yash19k',
-  resumeUrl: import.meta.env.VITE_RESUME_URL || '/Yash_Kshatriya_Resume.pdf',
+  email: import.meta.env.VITE_EMAIL || 'patelrushi042@gmail.com',
+  githubUsername: import.meta.env.VITE_GITHUB_USERNAME || 'Rushi0604',
+  resumeUrl: import.meta.env.VITE_RESUME_URL || '/Rushi_Patel_Resume.pdf',
   socials: {
-    github: import.meta.env.VITE_GITHUB_URL || 'https://github.com/Yash19k',
-    linkedin: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/yashkshatriya19/',
-    email: `mailto:${import.meta.env.VITE_EMAIL || 'kshatriyayash19@gmail.com'}`,
+    github: import.meta.env.VITE_GITHUB_URL || 'https://github.com/Rushi0604',
+    linkedin: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/rushi-patel-392a05379/',
+    email: `mailto:${import.meta.env.VITE_EMAIL || 'patelrushi042@gmail.com'}`,
     leetcode: 'https://leetcode.com/u/Yash19k/',
   },
   coordinates: {

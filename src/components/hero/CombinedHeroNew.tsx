@@ -3,7 +3,7 @@ import { ReferenceHeroText } from "./ReferenceHeroText";
 import ReferenceImageParticles from "./ReferenceImageParticles";
 import MoltenMetal from "./MoltenMetal";
 import Ribbons from "../ui/Ribbons";
-import yashImg from "./yash.png";
+const rushiImg = "/images/rushi.png";
 
 export const CombinedHeroNew: React.FC = () => {
   return (
@@ -92,8 +92,8 @@ export const CombinedHeroNew: React.FC = () => {
         }}
       >
         <ReferenceImageParticles
-          src={yashImg}
-          alt="Yash Kshatriya"
+          src={rushiImg}
+          alt="Rushi Patel"
           imageWidth={300}
           imageHeight={300}
         />
