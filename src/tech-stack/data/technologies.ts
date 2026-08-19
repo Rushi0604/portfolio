@@ -54,7 +54,7 @@ export const techStackCategories: TechCategory[] = [
         url: "https://djangoproject.com",
       },
       {
-        name: "Django REST Framework",
+        name: "REST Framework",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
         url: "https://www.django-rest-framework.org",
       },

@@ -11,7 +11,7 @@ export const careerData: CareerEntry[] = [
     position: "Completed Class 12",
     company: "JL High School Maninagar",
     period: "2024",
-    description: "Completed my Class 12 education and began my journey toward Computer Science and technology.",
+    description: "Completed my Class 12 education and began my journey towards Computer Science and technology.",
     side: "left"
   },
   {
@@ -32,7 +32,7 @@ export const careerData: CareerEntry[] = [
     position: "Started AI/ML Journey",
     company: "Artificial Intelligence & Machine Learning",
     period: "2025",
-    description: "Began developing my skills in AI and Machine Learning through structured learning, experimentation, and hands-on projects.",
+    description: "Began developing my skills in AI and Machine Learning through structured learning, experimentation, and hand-on projects.",
     side: "right"
   },
   {
